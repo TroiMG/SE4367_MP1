@@ -68,3 +68,19 @@ How to execute:
 
 Modifications to file(s):
 1. Change *String mainclass = "HelloThread";* to *String mainclass = "src.HelloThread";*
+2. Added the following code segment:
+	//your code starts here
+		   	    Log log = new Log();
+		            boolean isWrite = true;
+		            boolean isStatic = ((SootField)stmt.getFieldRef().getField()).isStatic(); 
+		    		Class clss = stmt.getDefBoxes().get(0).getValue().getClass();        
+
+		            try {
+		             if( (clss == Class.forName("soot.jimple.internal.JInstanceFieldRef")) || (clss == Class.forName("soot.jimple.StaticFieldRef"))  ) {
+		              isWrite = true;
+		             } 
+		             else { isWrite = false; }
+		            } catch (Exception e) {}
+		            
+		            log.logFieldAcc(stmt, stmt.getFieldRef().toString(), isStatic, isWrite);
+
