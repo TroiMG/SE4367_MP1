@@ -19,6 +19,7 @@ Modifications to file(s):
 1. Change *String mainclass = "GCD";* to *String mainclass = "src.GCD";* in TestDominatorFInder.java
 
 Your task: given a method m and a statement s, to find all the statements in m that dominate s.
+I concluded that the original output is correct.
 
 # Part 2: Data Flow Analysis - Call Graph Construction
 How to execute:
@@ -42,7 +43,11 @@ Modifications to file(s):
 	    
 	    //print out the total runtime
 	    System.out.println("Time: " + (endTimer-startTimer));
+	    
+Question: Which method does animal.saySomething() in the main method of Example.java call?
+Answer: animal.saySomething() calls Cat.saySomething()
 
+Question: Find the speed and edge differences between PTA and CHA.
 Answers:
 CHA Speed = 255ms
 CHA Total Edges = 12
@@ -69,18 +74,29 @@ How to execute:
 Modifications to file(s):
 1. Change *String mainclass = "HelloThread";* to *String mainclass = "src.HelloThread";*
 2. Added the following code segment:
-	//your code starts here
-		   	    Log log = new Log();
+//your code starts here
+		            Log log = new Log();
 		            boolean isWrite = true;
-		            boolean isStatic = ((SootField)stmt.getFieldRef().getField()).isStatic(); 
 		    		Class clss = stmt.getDefBoxes().get(0).getValue().getClass();        
 
 		            try {
-		             if( (clss == Class.forName("soot.jimple.internal.JInstanceFieldRef")) || (clss == Class.forName("soot.jimple.StaticFieldRef"))  ) {
-		              isWrite = true;
-		             } 
-		             else { isWrite = false; }
+		            	
+		            	if( (clss == Class.forName("soot.jimple.internal.JInstanceFieldRef")) || (clss == Class.forName("soot.jimple.StaticFieldRef"))  ) {
+		            	isWrite = true;
+		            } 
+		            	else { 
+		            		isWrite = false; 
+		            	}
 		            } catch (Exception e) {}
 		            
-		            log.logFieldAcc(stmt, stmt.getFieldRef().toString(), isStatic, isWrite);
+		            log.logFieldAcc(stmt, stmt.getFieldRef().toString(), ((SootField)stmt.getFieldRef().getField()).isStatic(), isWrite);
+
+Output:
+Thread Thread-9 wrote static field <src.HelloThread: int x>
+Thread Thread-10 wrote static field <src.HelloThread: int x>
+Thread Thread-10 read instance field r0.<src.HelloThread$TestThread: int y> of object $i0 = r0.<src.HelloThread$TestThread: int y>
+Thread Thread-10 wrote instance field r0.<src.HelloThread$TestThread: int y> of object r0.<src.HelloThread$TestThread: int y> = $i1
+Thread Thread-9 read instance field $r2.<src.HelloThread$TestThread: int y> of object $i3 = $r2.<src.HelloThread$TestThread: int y>
+Thread Thread-9 read static field <src.HelloThread: int x>
+Thread Thread-9 read static field <java.lang.System: java.io.PrintStream out>
 
