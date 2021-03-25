@@ -19,7 +19,8 @@ Modifications to file(s):
 1. Change *String mainclass = "GCD";* to *String mainclass = "src.GCD";* in TestDominatorFInder.java
 
 Your task: given a method m and a statement s, to find all the statements in m that dominate s.
-I concluded that the original output is correct because the output aligns with the definition that denominator is a node d dominates a node n if every path from the entry node to n must go through d, and every node dominates itself.
+
+Answer: I concluded that the original output is correct because the output aligns with the definition that denominator is a node d dominates a node n if every path from the entry node to n must go through d, and every node dominates itself.
 
 # Part 2: Data Flow Analysis - Call Graph Construction
 How to execute:
