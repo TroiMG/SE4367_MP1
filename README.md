@@ -1,6 +1,6 @@
 # SE4367_MP1
-Author: Troi Megan Guichard
-NETID: TMG180000
+Author: **Troi Megan Guichard**
+NETID: **TMG180000**
 
 # Part 0: Getting Started
 How to execute:
