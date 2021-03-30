@@ -1,5 +1,5 @@
 # SE4367_MP1
-Author: **Troi Megan Guichard**
+Author: **Troi Megan Guichard** | 
 NETID: **TMG180000**
 
 # Part 0: Getting Started
